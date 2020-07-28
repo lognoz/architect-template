@@ -1,6 +1,6 @@
 ;; architect.el --- Architect JQuery Plugin Template -*- lexical-binding: t; -*-
 
-(architect-default-directory "~/document")
+(architect-default-directory "~/project/web")
 
 (architect-variable
   :variable "__year__"
