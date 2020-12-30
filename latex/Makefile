@@ -1,6 +1,6 @@
 # See LICENSE file for copyright and license details.
 
-all: pdf clean image
+all: pdf clean
 
 pdf:
 	@cd src/ && lualatex __filename__.tex
@@ -11,7 +11,7 @@ clean:
 
 image:
 	@rm -f asset/__filename__.*.png
-	@python src/script/doc.py
+	@python__python_version__ src/script/doc.py
 	@rm -f asset/__filename__.png
 
 commit:
