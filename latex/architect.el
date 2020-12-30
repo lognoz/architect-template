@@ -3,6 +3,10 @@
 (architect-default-directory "~/document/latex/")
 
 (architect-variable
+  :variable "__python_version__"
+  :value "3.7")
+
+(architect-variable
   :variable "__date__"
   :value (format-time-string "%B %Y"))
 
@@ -22,4 +26,7 @@
   :input "Description")
 
 (architect-shell-command
-   :command "make pdf image clean")
+   :command "pip install -r src/script/requirements.txt")
+
+(architect-shell-command
+   :command "make pdf clean image")
