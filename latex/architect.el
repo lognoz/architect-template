@@ -45,7 +45,7 @@
   :input "Description")
 
 (architect-shell-command
-   :command "pip install -r src/script/requirements.txt")
+  :command "pip install -r src/script/requirements.txt")
 
 (architect-shell-command
-   :command "make pdf clean image")
+  :command "make pdf clean image")
