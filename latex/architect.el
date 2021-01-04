@@ -1,22 +1,21 @@
 ;; architect.el --- Architect LaTex Template -*- lexical-binding: t; -*-
 
-(defun require-program (program)
+(defun architect-latex--require-program (program)
   "Check for system PROGRAM and printing error if not found."
   (unless (executable-find program)
-    (user-error "Required program \"%s\" not found in your path" program)))
+    (user-error "Required program '%s' not found in your path" program)))
 
-(defvar architect-latex-pip-version
-  (progn
-    (require-program "pip")
-    (string-trim
-      (replace-regexp-in-string ")" ""
-        (shell-command-to-string "pip -V | grep -oE '[^ ]+$'"))))
-  "The current pip version.")
+(defun architect-latex--pip-version ()
+  "Return the current pip version."
+  (architect-latex--require-program "pip")
+  (string-trim
+    (replace-regexp-in-string ")" ""
+      (shell-command-to-string "pip -V | grep -oE '[^ ]+$'"))))
 
 (defvar architect-latex-python-version
-  (let ((python (concat "python" architect-latex-pip-version)))
-    (require-program python)
-    architect-latex-pip-version)
+  (let ((version (architect-latex--pip-version)))
+    (require-program (concat "python" version))
+    version)
   "The current python version.")
 
 (architect-default-directory "~/document/latex/")
